@@ -49,7 +49,7 @@ const CityTitle = async ({
         {getTitle()}
       </h1>
       <h2 className="text-sm mb-2 mt-1 text-center sm:text-left">
-        {capitalizeFirstLetter(city)} {homeText[requiredType]} homes for{" "}
+        {capitalizeFirstLetter(city)} {homeText[requiredType]} for{" "}
         {saleLeaseVal?.toLowerCase() == "lease" ? "Rent or Lease" : "sale"}.
         Prices from $1 to $5,000,000. Open houses available.
       </h2>

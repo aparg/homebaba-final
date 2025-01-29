@@ -34,27 +34,30 @@ const PropertyTypes = () => {
 
   const handlePropertyClick = (filter) => {
     // Scroll to the featured listings section
-    const listingsSection = document.getElementById("featured-listings");
-    if (listingsSection) {
-      const headerOffset = 80;
-      const elementPosition = listingsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    if (!isResale) {
+      const listingsSection = document.getElementById("featured-listings");
+      if (listingsSection) {
+        const headerOffset = 80;
+        const elementPosition = listingsSection.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
 
-      // Set the active tab in the URL
-      if (filter !== "Featured") {
-        router.push(`/?tab=${filter}`, undefined, { shallow: true });
+        // Set the active tab in the URL
+        if (filter !== "Featured") {
+          router.push(`/?tab=${filter}`, undefined, { shallow: true });
+        }
+
+        // Dispatch a custom event to notify FeaturedProjects
+        const event = new CustomEvent("propertyTypeSelected", {
+          detail: { filter },
+        });
+        window.dispatchEvent(event);
       }
-
-      // Dispatch a custom event to notify FeaturedProjects
-      const event = new CustomEvent("propertyTypeSelected", {
-        detail: { filter },
-      });
-      window.dispatchEvent(event);
     }
   };
 

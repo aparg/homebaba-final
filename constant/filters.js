@@ -235,6 +235,8 @@ export const roads = {
 export const homeText = {
   "Semi Detached": "Semi Detached Homes",
   Detached: "Detached Homes",
-  "Town House": "Townhomes",
+  Townhomes: "Townhomes",
   Condo: "Condos",
+  Triplex: "Triplex Homes",
+  Duplex: "Duplex Homes",
 };
