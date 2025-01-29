@@ -113,7 +113,6 @@ const CustomDropdown = ({
               })}
               className="hover:pointer"
             >
-              {console.log("##")}
               <X className="w-5 h-5" />
             </Link>
           ) : (
