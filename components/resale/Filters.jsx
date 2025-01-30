@@ -82,10 +82,15 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
       filterState.saleLease == saleLease.sale.name
         ? priceRangesSaleProperties[value]
         : priceRangesLeaseProperties[value];
-    newFilterState[name] = {
-      min: priceRange?.min,
-      max: priceRange?.max,
-    };
+
+    const priceRanges = value.split(",");
+    newFilterState[name] = [];
+    priceRanges.forEach((range) =>
+      newFilterState[name].push({
+        min: range?.min,
+        max: range?.max,
+      })
+    );
 
     scrollToFilters();
     setFilterState({ ...newFilterState });
@@ -204,7 +209,7 @@ const Filters = ({ filterState, setFilterState, fetchFilteredData }) => {
               value={"Price Range"}
               setFilterState={setFilterState}
               handleFilterChange={handlePriceChange}
-              isMulti={false}
+              isMulti={true}
               isMobileView={isMobileView}
               city={filterState.city}
               saleLease={filterState.saleLease}

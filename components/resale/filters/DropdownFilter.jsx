@@ -38,9 +38,15 @@ const CustomDropdown = ({
   const handleSelect = (option) => {
     let newValues;
     if (isMulti) {
-      newValues = selectedValues.includes(option)
-        ? selectedValues.filter((val) => val !== option)
-        : [...selectedValues, option];
+      if (name == "priceRange") {
+        newValues = [
+          ...selectedValues,
+          Object.keys(filterObj).find((keyVal) => {
+            if (keyVal == option) return filterObj[keyVal];
+          }),
+        ];
+        console.log(newValues);
+      }
     } else {
       if (name != "priceRange") {
         newValues = [
